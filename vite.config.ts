@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "./", // 🔥 Most important fix for Netlify white screen
+  base: "./", 
 
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
@@ -15,7 +15,7 @@ export default defineConfig({
 
   build: {
     target: "esnext",
-    outDir: "dist"  // 🔥 must be dist for Netlify
+    outDir: "dist"  
   },
 
   server: {
