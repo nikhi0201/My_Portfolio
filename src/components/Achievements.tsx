@@ -5,40 +5,28 @@ import { Trophy, Award, Code, Users } from 'lucide-react';
 
 const achievements = [
   {
-    title: "1st Position - TechnoSprint",
-    description: "Secured first position in TechnoSprint, a coding event part of the annual Promethean Tech fest",
-    icon: <Trophy size={24} />,
-    color: "from-yellow-500 to-orange-500"
-  },
-  {
-    title: "ML Certification - IIT Madras (NPTEL)",
-    description: "Achieved top 5% certification in 'Introduction to Machine Learning' from IIT Madras",
+    title: "Salesforce Certified AI Associate & Agentforce Specialist",
+    description: "Certified in AI agents automation on Salesforce.",
     icon: <Award size={24} />,
     color: "from-blue-500 to-cyan-500"
   },
   {
-    title: "8th Place - IIM Raipur Competition",
-    description: "Achieved 8th place at Vislakshan, a national-level analysis competition by IIM Raipur",
-    icon: <Code size={24} />,
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    title: "300+ Programming Solutions",
-    description: "Solved over 250 programming questions on various platforms demonstrating problem-solving skills",
+    title: "600+ Programming Solutions",
+    description: "Solved over 600 programming questions on various platforms.",
     icon: <Code size={24} />,
     color: "from-green-500 to-emerald-500"
   },
   {
-    title: "DEMUX Hackathon Participant",
-    description: "Participated in DEMUX, a 24 hour Hackathon held at BVRIT",
+    title: "8th Place - Vishleshan (IIM Raipur)",
+    description: "Achieved 8th place in the national-level Vishleshan analysis competition by IIM Raipur.",
     icon: <Users size={24} />,
-    color: "from-indigo-500 to-purple-500"
+    color: "from-purple-500 to-pink-500"
   },
   {
-    title: "Group Dance Competition",
-    description: "Participated in the Group Dance Competition conducted in Mahindra University",
-    icon: <Users size={24} />,
-    color: "from-pink-500 to-purple-500"
+    title: "1st Position - TechnoSprint",
+    description: "Secured first position in TechnoSprint, a coding event part of the annual Promethean Tech fest.",
+    icon: <Trophy size={24} />,
+    color: "from-yellow-500 to-orange-500"
   }
 ];
 

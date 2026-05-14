@@ -4,20 +4,32 @@ import { useRef } from 'react';
 
 const skillCategories = [
   {
-    title: "Programming Languages",
-    skills: ["C++", "Java", "C", "Python", "SQL", "HTML", "CSS", "JavaScript", "React.js", "Tailwind", "TypeScript"]
+    title: "Languages",
+    skills: ["C++", "Java", "Python", "SQL", "JavaScript", "TypeScript"]
   },
   {
-    title: "Libraries & Frameworks",
-    skills: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn", "TensorFlow", "Keras", "OpenCV", "Git", "GitHub", "Figma", "MongoDB", "Node.js"]
+    title: "Backend",
+    skills: ["Node.js", "Express.js", "REST APIs"]
   },
   {
-    title: "Computer Engineering",
-    skills: ["Data Structures and Algorithms", "DBMS", "OOPS", "Operating Systems", "Computer Networks", "Machine Learning", "Data Science"]
+    title: "Databases",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Database Design", "SQL Optimization"]
   },
   {
-    title: "Soft Skills",
-    skills: ["Leadership", "Effective Communication", "Teamwork", "Problem Solving", "Adaptability", "Time Management"]
+    title: "Frontend",
+    skills: ["React.js", "HTML", "CSS"]
+  },
+  {
+    title: "Core",
+    skills: ["Data Structures & Algorithms", "DBMS", "OOPS", "Operating Systems", "Computer Networks"]
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Linux", "Postman", "Figma", "Claude", "Antigravity", "Cursor"]
+  },
+  {
+    title: "Practices",
+    skills: ["Problem Solving", "Debugging", "Code Reviews", "Agile"]
   }
 ];
 

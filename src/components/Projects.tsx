@@ -7,40 +7,37 @@ const projects = [
   {
     title: "Text Snatcher",
     type: "Generic AI",
-    description: "Advanced Handwritten Text Recognition system capable of transcribing English and Hindi scripts using a CNN-BiLSTM-CTC architecture.",
+    description: "Advanced handwritten text recognition system for transcribing English and Hindi scripts using a CNN-BiLSTM-CTC architecture.",
     highlights: [
-      "Achieved approximately 95% accuracy",
-      "5% character error rate",
-      "8-10% word error rate",
-      "96% precision"
+      "Trained on IAM and Devanagari datasets",
+      "95% accuracy with 5% CER and 8-10% WER",
+      "Built for digitization, archival, and real-time transcription"
     ],
     tech: ["Python", "CNN", "BiLSTM", "CTC", "IAM Dataset", "Devanagari Dataset"],
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Carbon Emission Calculator",
-    type: "Front End",
-    description: "Responsive web application for calculating vehicle-based carbon footprints with AI-driven suggestions for reducing emissions.",
+    title: "BloodStock - Blood Availability Application",
+    type: "Full Stack",
+    description: "Prototype blood availability tracking system with location-based donor search and emergency matching logic.",
     highlights: [
-      "Per-person and total emission calculations",
-      "Multiple gases tracking (CO, CH, NO, CO₂, NOₓ, SOₓ, PM)",
-      "90%+ accuracy in results",
-      "AI-driven eco-friendly suggestions"
+      "Location-based donor search with simulated datasets",
+      "Real-time features using Node.js, TypeScript, PostgreSQL, and Socket.IO",
+      "Modular Next.js architecture with secure REST APIs"
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    tech: ["Next.js", "Node.js", "TypeScript", "PostgreSQL", "Socket.IO", "REST APIs"],
     gradient: "from-green-500 to-emerald-500"
   },
   {
-    title: "Typing Speed Race Game",
+    title: "SmartResume - AI-Enhanced Resume Builder",
     type: "Full Stack",
-    description: "Interactive multiplayer typing game to measure speed, accuracy, and progress with real-time synchronization and server-level validation.",
+    description: "Full-stack resume builder with responsive UI, real-time preview, and automated document workflows.",
     highlights: [
-      "Synchronized multiplayer gameplay",
-      "Real-time progress tracking",
-      "Dynamic accuracy computation",
-      "Server-side validation"
+      "Built with React.js, Node.js, and MongoDB",
+      "Integrated ImageKit for secure CDN-based image delivery",
+      "Dynamic template rendering with automated PDF generation"
     ],
-    tech: ["React.js", "Socket.io", "Node.js", "Express"],
+    tech: ["React.js", "Node.js", "MongoDB", "ImageKit", "PDF Generation"],
     gradient: "from-purple-500 to-pink-500"
   }
 ];

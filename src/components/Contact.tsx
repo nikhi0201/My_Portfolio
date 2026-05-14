@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Mail, Phone, Github, Linkedin, MapPin } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Code } from 'lucide-react';
 
 const contactMethods = [
   {
@@ -19,16 +19,23 @@ const contactMethods = [
     color: "from-green-500 to-emerald-500"
   },
   {
+    icon: <Code size={24} />,
+    label: "LeetCode",
+    value: "leetcode.com/nikhi0201",
+    href: "https://leetcode.com/nikhi0201/",
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
     icon: <Github size={24} />,
     label: "GitHub",
-    value: "Nikhith",
+    value: "nikhi0201",
     href: "https://github.com/nikhi0201",
     color: "from-gray-500 to-gray-700"
   },
   {
     icon: <Linkedin size={24} />,
     label: "LinkedIn",
-    value: "Connect with me",
+    value: "nikhith-tangadipally",
     href: "https://www.linkedin.com/in/nikhith-tangadipally-3363a4293/",
     color: "from-blue-500 to-cyan-500"
   }
@@ -55,7 +62,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
           {contactMethods.map((method, index) => (
             <motion.a
               key={method.label}

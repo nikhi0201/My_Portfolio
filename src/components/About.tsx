@@ -11,17 +11,17 @@ export function About() {
     {
       icon: <Code2 size={24} />,
       title: "Full Stack Development",
-      description: "Proficient in React, Node.js, TypeScript, and modern web technologies"
+      description: "Building scalable MERN applications with Node.js, Express.js, React, and TypeScript"
     },
     {
       icon: <Brain size={24} />,
       title: "AI/ML Expertise",
-      description: "Specialized in machine learning, neural networks, and data analysis"
+      description: "Hands-on experience in ML model training and handwritten text recognition pipelines"
     },
     {
       icon: <Rocket size={24} />,
       title: "Problem Solver",
-      description: "1st place in TechnoSprint, 8th in IIM competition, 250+ questions solved"
+      description: "600+ problems solved, TechnoSprint winner, and Vishleshan (IIM Raipur) finalist"
     }
   ];
 
@@ -38,8 +38,8 @@ export function About() {
             About Me
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto">
-            A passionate developer from BV Raju Institute of Technology with a strong foundation in 
-            AI/ML and full-stack development. I love building innovative solutions that make a difference.
+            A passionate developer from BV Raju Institute of Technology with a strong foundation in
+            AI/ML and MERN stack development. I love building innovative solutions that make a difference.
           </p>
         </motion.div>
 
