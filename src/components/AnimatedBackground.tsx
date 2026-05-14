@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { motion } from 'motion/react';
 
+const ORB_GRADIENTS = [
+  'radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.6), rgba(30, 27, 75, 0.1) 60%, transparent)',
+  'radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.55), rgba(46, 16, 101, 0.1) 60%, transparent)',
+  'radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.55), rgba(80, 7, 36, 0.1) 60%, transparent)',
+];
+
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const prismRings = useMemo(
@@ -15,7 +21,7 @@ export function AnimatedBackground() {
 
   const auroraOrbs = useMemo(
     () =>
-      Array.from({ length: 12 }, (_, index) => {
+      Array.from({ length: 9 }, (_, index) => {
         const size = 140 + Math.random() * 220;
         return {
           id: `orb-${index}`,
@@ -171,16 +177,11 @@ export function AnimatedBackground() {
 
       {/* 3D aurora orbs */}
       <div
-        className="fixed inset-0 z-0 pointer-events-none"
+        className="fixed inset-0 z-[1] pointer-events-none"
         style={{ perspective: '1400px' }}
       >
         {auroraOrbs.map((orb) => {
-          const gradient =
-            orb.hue === 0
-              ? 'radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.6), rgba(30, 27, 75, 0.1) 60%, transparent)'
-              : orb.hue === 1
-              ? 'radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.55), rgba(46, 16, 101, 0.1) 60%, transparent)'
-              : 'radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.55), rgba(80, 7, 36, 0.1) 60%, transparent)';
+          const gradient = ORB_GRADIENTS[orb.hue];
           return (
             <div
               key={orb.id}
@@ -197,7 +198,7 @@ export function AnimatedBackground() {
                   width: orb.size,
                   height: orb.size,
                   background: gradient,
-                  filter: 'blur(2px)',
+                  filter: 'blur(1.5px)',
                 }}
                 animate={{
                   x: [0, -60, 40, 0],
