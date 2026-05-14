@@ -1,8 +1,35 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { motion } from 'motion/react';
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const prismRings = useMemo(
+    () => [
+      { size: 420, depth: -260, stroke: 'rgba(99, 102, 241, 0.35)', glow: 'rgba(99, 102, 241, 0.4)' },
+      { size: 620, depth: -120, stroke: 'rgba(168, 85, 247, 0.3)', glow: 'rgba(168, 85, 247, 0.35)' },
+      { size: 820, depth: 40, stroke: 'rgba(236, 72, 153, 0.25)', glow: 'rgba(236, 72, 153, 0.3)' },
+      { size: 1020, depth: 180, stroke: 'rgba(139, 92, 246, 0.2)', glow: 'rgba(139, 92, 246, 0.25)' },
+    ],
+    []
+  );
+
+  const auroraOrbs = useMemo(
+    () =>
+      Array.from({ length: 12 }, (_, index) => {
+        const size = 140 + Math.random() * 220;
+        return {
+          id: `orb-${index}`,
+          size,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          depth: Math.random() * 800 - 400,
+          hue: index % 3,
+          duration: 18 + Math.random() * 18,
+          delay: Math.random() * 6,
+        };
+      }),
+    []
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -89,6 +116,107 @@ export function AnimatedBackground() {
         className="fixed inset-0 z-0"
       />
 
+      {/* 3D prism rings */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{ perspective: '1600px' }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          style={{ transformStyle: 'preserve-3d' }}
+          animate={{
+            rotateX: [8, -12, 8],
+            rotateY: [-14, 18, -14],
+            rotateZ: [0, 360],
+          }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        >
+          {prismRings.map((ring, index) => (
+            <motion.div
+              key={`ring-${ring.size}`}
+              className="absolute left-1/2 top-1/2 rounded-[32%] border"
+              style={{
+                width: ring.size,
+                height: ring.size,
+                marginLeft: -ring.size / 2,
+                marginTop: -ring.size / 2,
+                borderColor: ring.stroke,
+                boxShadow: `0 0 50px ${ring.glow}`,
+                transform: `translateZ(${ring.depth}px)`,
+              }}
+              animate={{
+                rotateZ: index % 2 === 0 ? [0, 360] : [360, 0],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{
+                rotateZ: {
+                  duration: 36 + index * 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                },
+                opacity: {
+                  duration: 8 + index * 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                },
+              }}
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* 3D aurora orbs */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{ perspective: '1400px' }}
+      >
+        {auroraOrbs.map((orb) => {
+          const gradient =
+            orb.hue === 0
+              ? 'radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.6), rgba(30, 27, 75, 0.1) 60%, transparent)'
+              : orb.hue === 1
+              ? 'radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.55), rgba(46, 16, 101, 0.1) 60%, transparent)'
+              : 'radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.55), rgba(80, 7, 36, 0.1) 60%, transparent)';
+          return (
+            <div
+              key={orb.id}
+              className="absolute"
+              style={{
+                left: `${orb.x}%`,
+                top: `${orb.y}%`,
+                transform: `translateZ(${orb.depth}px)`,
+              }}
+            >
+              <motion.div
+                className="rounded-full mix-blend-screen"
+                style={{
+                  width: orb.size,
+                  height: orb.size,
+                  background: gradient,
+                  filter: 'blur(2px)',
+                }}
+                animate={{
+                  x: [0, -60, 40, 0],
+                  y: [0, 50, -40, 0],
+                  opacity: [0.2, 0.7, 0.4, 0.2],
+                  scale: [0.85, 1.1, 0.95, 0.85],
+                }}
+                transition={{
+                  duration: orb.duration,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: orb.delay,
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+
       {/* Rotating geometric shapes */}
       <div className="fixed inset-0 z-0 overflow-hidden">
         {[...Array(6)].map((_, i) => (
@@ -105,20 +233,32 @@ export function AnimatedBackground() {
               borderRadius: i % 2 === 0 ? '30%' : '0%',
             }}
             animate={{
-              rotate: i % 2 === 0 ? [0, 360] : [360, 0],
-              scale: [1, 1.1, 1],
+              rotateZ: i % 2 === 0 ? [0, 360] : [360, 0],
+              rotateX: [0, 35, 0],
+              rotateY: [0, -25, 0],
+              scale: [1, 1.12, 1],
             }}
             transition={{
-              rotate: {
+              rotateZ: {
                 duration: 20 + i * 5,
                 repeat: Infinity,
-                ease: "linear"
+                ease: 'linear',
+              },
+              rotateX: {
+                duration: 12 + i * 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              },
+              rotateY: {
+                duration: 14 + i * 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
               },
               scale: {
                 duration: 10 + i * 2,
                 repeat: Infinity,
-                ease: "easeInOut"
-              }
+                ease: 'easeInOut',
+              },
             }}
           />
         ))}
