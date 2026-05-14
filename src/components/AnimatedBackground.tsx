@@ -167,8 +167,8 @@ export function AnimatedBackground() {
 
       {/* 3D aurora orbs */}
       <div
-        className="fixed inset-0 pointer-events-none"
-        style={{ perspective: '1400px', transformStyle: 'preserve-3d', zIndex: 1 }}
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{ perspective: '1400px', transformStyle: 'preserve-3d' }}
       >
         {AURORA_ORBS.map((orb) => {
           const gradient = ORB_GRADIENTS[orb.hue];
@@ -188,7 +188,7 @@ export function AnimatedBackground() {
                   width: orb.size,
                   height: orb.size,
                   background: gradient,
-                  filter: 'blur(1px)',
+                  filter: 'blur(3px)',
                 }}
                 animate={{
                   x: [0, -60, 40, 0],
