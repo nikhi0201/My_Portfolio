@@ -27,9 +27,6 @@ const AURORA_ORBS = [
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const prismRings = PRISM_RINGS;
-  const auroraOrbs = AURORA_ORBS;
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -134,7 +131,7 @@ export function AnimatedBackground() {
             ease: 'linear',
           }}
         >
-          {prismRings.map((ring, index) => (
+          {PRISM_RINGS.map((ring, index) => (
             <motion.div
               key={`ring-${ring.size}`}
               className="absolute left-1/2 top-1/2 rounded-[32%] border"
@@ -171,9 +168,9 @@ export function AnimatedBackground() {
       {/* 3D aurora orbs */}
       <div
         className="fixed inset-0 pointer-events-none"
-        style={{ perspective: '1400px', zIndex: 1 }}
+        style={{ perspective: '1400px', transformStyle: 'preserve-3d', zIndex: 1 }}
       >
-        {auroraOrbs.map((orb) => {
+        {AURORA_ORBS.map((orb) => {
           const gradient = ORB_GRADIENTS[orb.hue];
           return (
             <div
