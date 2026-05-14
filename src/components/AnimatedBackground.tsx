@@ -1,5 +1,12 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+
+const PRISM_RINGS = [
+  { size: 420, depth: -260, stroke: 'rgba(99, 102, 241, 0.35)', glow: 'rgba(99, 102, 241, 0.4)' },
+  { size: 620, depth: -120, stroke: 'rgba(168, 85, 247, 0.3)', glow: 'rgba(168, 85, 247, 0.35)' },
+  { size: 820, depth: 40, stroke: 'rgba(236, 72, 153, 0.25)', glow: 'rgba(236, 72, 153, 0.3)' },
+  { size: 1020, depth: 180, stroke: 'rgba(139, 92, 246, 0.2)', glow: 'rgba(139, 92, 246, 0.25)' },
+];
 
 const ORB_GRADIENTS = [
   'radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.6), rgba(30, 27, 75, 0.1) 60%, transparent)',
@@ -7,35 +14,21 @@ const ORB_GRADIENTS = [
   'radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.55), rgba(80, 7, 36, 0.1) 60%, transparent)',
 ];
 
+const AURORA_ORBS = [
+  { id: 'orb-0', size: 180, x: 8, y: 18, depth: -320, hue: 0, duration: 26, delay: 0 },
+  { id: 'orb-1', size: 220, x: 76, y: 22, depth: -140, hue: 1, duration: 30, delay: 2 },
+  { id: 'orb-2', size: 260, x: 18, y: 68, depth: -60, hue: 2, duration: 28, delay: 4 },
+  { id: 'orb-3', size: 200, x: 60, y: 72, depth: 120, hue: 0, duration: 24, delay: 1 },
+  { id: 'orb-4', size: 240, x: 36, y: 34, depth: 220, hue: 1, duration: 32, delay: 3 },
+  { id: 'orb-5', size: 190, x: 84, y: 58, depth: -240, hue: 2, duration: 27, delay: 5 },
+  { id: 'orb-6', size: 210, x: 42, y: 86, depth: 80, hue: 1, duration: 29, delay: 2 },
+  { id: 'orb-7', size: 230, x: 12, y: 44, depth: 260, hue: 0, duration: 31, delay: 4 },
+];
+
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const prismRings = useMemo(
-    () => [
-      { size: 420, depth: -260, stroke: 'rgba(99, 102, 241, 0.35)', glow: 'rgba(99, 102, 241, 0.4)' },
-      { size: 620, depth: -120, stroke: 'rgba(168, 85, 247, 0.3)', glow: 'rgba(168, 85, 247, 0.35)' },
-      { size: 820, depth: 40, stroke: 'rgba(236, 72, 153, 0.25)', glow: 'rgba(236, 72, 153, 0.3)' },
-      { size: 1020, depth: 180, stroke: 'rgba(139, 92, 246, 0.2)', glow: 'rgba(139, 92, 246, 0.25)' },
-    ],
-    []
-  );
-
-  const auroraOrbs = useMemo(
-    () =>
-      Array.from({ length: 9 }, (_, index) => {
-        const size = 140 + Math.random() * 220;
-        return {
-          id: `orb-${index}`,
-          size,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          depth: Math.random() * 800 - 400,
-          hue: index % 3,
-          duration: 18 + Math.random() * 18,
-          delay: Math.random() * 6,
-        };
-      }),
-    []
-  );
+  const prismRings = PRISM_RINGS;
+  const auroraOrbs = AURORA_ORBS;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -177,8 +170,8 @@ export function AnimatedBackground() {
 
       {/* 3D aurora orbs */}
       <div
-        className="fixed inset-0 z-[1] pointer-events-none"
-        style={{ perspective: '1400px' }}
+        className="fixed inset-0 pointer-events-none"
+        style={{ perspective: '1400px', zIndex: 1 }}
       >
         {auroraOrbs.map((orb) => {
           const gradient = ORB_GRADIENTS[orb.hue];
@@ -198,7 +191,7 @@ export function AnimatedBackground() {
                   width: orb.size,
                   height: orb.size,
                   background: gradient,
-                  filter: 'blur(1.5px)',
+                  filter: 'blur(1px)',
                 }}
                 animate={{
                   x: [0, -60, 40, 0],
