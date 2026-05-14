@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Github, Linkedin, Mail, Phone, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, Code } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -40,7 +40,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              Full Stack Developer & AI/ML Enthusiast
+              MERN Stack Developer & AI/ML Enthusiast
             </motion.p>
             <motion.p
               className="text-gray-400 mt-2"
@@ -48,7 +48,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
-              B.Tech in Computer Science specialized in AI/ML
+              B.Tech in Computer Science (AI/ML)
             </motion.p>
           </motion.div>
 
@@ -59,15 +59,15 @@ export function Hero() {
             transition={{ delay: 0.8 }}
           >
             <SocialLink
-              href="https://github.com/nikhi0201"
-              icon={<Github size={20} />}
-              label="GitHub"
-              delay={0.9}
-            />
-            <SocialLink
               href="https://www.linkedin.com/in/nikhith-tangadipally-3363a4293/"
               icon={<Linkedin size={20} />}
               label="LinkedIn"
+              delay={0.9}
+            />
+            <SocialLink
+              href="https://leetcode.com/nikhi0201/"
+              icon={<Code size={20} />}
+              label="LeetCode"
               delay={1.0}
             />
             <SocialLink
@@ -81,6 +81,12 @@ export function Hero() {
               icon={<Phone size={20} />}
               label="+91-7671964629"
               delay={1.2}
+            />
+            <SocialLink
+              href="https://github.com/nikhi0201"
+              icon={<Github size={20} />}
+              label="GitHub"
+              delay={1.3}
             />
           </motion.div>
 
